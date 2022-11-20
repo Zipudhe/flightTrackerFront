@@ -9,6 +9,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@react-spring/web": "^9.5.5",
     "@types/styled-components": "^5.1.12",
     "axios": "^1.0.0",
     "react": "^17.0.0",
