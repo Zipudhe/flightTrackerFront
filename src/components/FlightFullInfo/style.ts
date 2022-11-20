@@ -7,7 +7,6 @@ interface IText {
 
 export const Wrapper = styled.div`
   display: flex;
-  padding: 1rem;
 
   align-items: center;
   justify-content: center;
@@ -28,6 +27,7 @@ export const AircraftImg = styled.img`
 export const AircraftImgDiv = styled.div`
   /* border: 1px solid red; */
   height: 75%;
+  margin-left: 2rem;
 `;
 
 export const FlightInfoDiv = styled.div`
@@ -98,6 +98,10 @@ export const AirportsInfoDiv = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 16px;
+
+  > :first-child {
+    border-bottom: 1px solid gray;
+  }
 `;
 
 export const LocationDiv = styled.div`
@@ -130,5 +134,4 @@ export const AirportInformationDiv = styled.div`
   width: 100%;
 
   text-align: center;
-  border-bottom: 1px solid black;
 `;

@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
         font: inherit;
         vertical-align: baseline;
     }
+
+    html {
+        overflow-x: hidden;
+    }
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {
@@ -65,6 +69,7 @@ const GlobalStyle = createGlobalStyle`
         height: 100vh;
         width: 100vw;
         background-color: var(--primary-background-color);
+        scroll-y:
     }
 
 `;

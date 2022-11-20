@@ -1,8 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { IDetailedFlight } from '../../services/getDetailedFlight';
 import FlightInfo from '../FlightInfo';
 
-import { HeaderText, EnumTextTypes } from '../../components/Typography';
+import {
+  HeaderText,
+  EnumTextTypes,
+  AnimatedHeader,
+} from '../../components/Typography';
+
+import { useSpring, config } from '@react-spring/web';
 
 interface IFlights {
   isLoading: Boolean;
@@ -12,11 +18,25 @@ interface IFlights {
 
 export const Flights: FC<IFlights> = ({ isLoading, flights, setFlight }) => {
   if (isLoading) {
-    return <HeaderText type={EnumTextTypes.primary}> Loading.... </HeaderText>;
+    const [flip, setFlip] = useState(false);
+    const animatedProps = useSpring({
+      to: { opacity: 1 },
+      from: { opacity: 0 },
+      reset: true,
+      reverse: flip,
+      delay: 100,
+      config: config.molasses,
+      onRest: () => setFlip(!flip),
+    });
+    return <AnimatedHeader style={animatedProps}> Loading.... </AnimatedHeader>;
   }
 
-  if (!flights) {
-    return <HeaderText type={EnumTextTypes.secondary}> No Fligts </HeaderText>;
+  if (flights.length == 0) {
+    return (
+      <HeaderText type={EnumTextTypes.secondary}>
+        Nenhum voo próximo encontrado
+      </HeaderText>
+    );
   }
 
   return (

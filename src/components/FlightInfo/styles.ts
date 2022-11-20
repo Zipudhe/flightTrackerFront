@@ -22,6 +22,7 @@ export const ImageDiv = styled.div`
   width: 100%;
   height: 45%;
   border-radius: 8px;
+  text-align: center;
 
   p {
     position: relative;
@@ -49,6 +50,7 @@ export const FlightDiv = styled.div`
   width: 100%;
 
   background-color: var(--secondary-background-color);
+  border-radius: 8px;
 
   p {
     text-align: center;

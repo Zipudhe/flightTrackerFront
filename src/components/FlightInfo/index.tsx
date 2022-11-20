@@ -35,8 +35,15 @@ export const FlightInfo: FC<IFlightDiv> = ({ flightData, onClick, onBlur }) => {
       <Suspense fallback={() => <h1> Carregando... </h1>}>
         <ImageDiv>
           <Image
-            src={flightData.aircraft.images.thumbnails[0].src}
-            alt={flightData.aircraft.images.thumbnails[0].source}
+            src={
+              flightData.aircraft.images &&
+              flightData.aircraft.images.thumbnails[0].src
+            }
+            alt={
+              flightData.aircraft.images
+                ? flightData.aircraft.images.thumbnails[0].source
+                : flightData.aircraft.model.text
+            }
           />
           {/* <p> {flightData.aircraft.images.thumbnails[0].copyright} </p> */}
         </ImageDiv>

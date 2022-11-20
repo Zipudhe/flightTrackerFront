@@ -1,18 +1,17 @@
 import styled from 'styled-components';
+import { animated } from '@react-spring/web';
 
-export const PlaneWrapper = styled.div`
+export const PlaneWrapper = styled(animated.div)`
   height: 30vh;
-  width: 100%;
+  width: 95%;
   overflow: hidden;
+  margin-left: 2rem;
 
   background-color: var(--secondary-background-color);
   display: flex;
   place-items: center;
 
-  > svg {
-    margin-left: 2rem;
-  }
-  animation: travel 3s linear;
+  /* animation: travel 1s linear; */
   z-index: 999;
   position: absolute;
 

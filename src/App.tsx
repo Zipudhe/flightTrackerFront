@@ -34,10 +34,10 @@ const App = () => {
   const [isFlightsLoading, setIsFlightsLoading] = useState<Boolean>(false);
 
   const getCircleCoordinates = (coords: GeolocationCoordinates) => {
-    const max_y = coords.latitude + 0.3;
-    const min_y = coords.latitude - 0.3;
-    const max_x = coords.longitude + 0.3;
-    const min_x = coords.longitude - 0.3;
+    const max_y = coords.latitude + 3;
+    const min_y = coords.latitude - 3;
+    const max_x = coords.longitude + 3;
+    const min_x = coords.longitude - 3;
 
     const circle = {
       radius: 0.1,

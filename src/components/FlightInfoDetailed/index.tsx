@@ -19,7 +19,7 @@ export const DetailedFlightInfo: FC<IFlightInfoDetailed> = ({ data }) => {
 
   useEffect(() => {
     setILoading(true);
-    forceLoading(3000).then(() => setILoading(false));
+    forceLoading(1400).then(() => setILoading(false));
   }, [data]);
 
   if (!data) {

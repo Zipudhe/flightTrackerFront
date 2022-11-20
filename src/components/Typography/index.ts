@@ -1,3 +1,4 @@
+import { animated } from '@react-spring/web';
 import styled from 'styled-components';
 
 export enum EnumTextTypes {
@@ -51,4 +52,12 @@ export const HeaderText = styled.h1<HeaderTypes>`
       opacity: 1;
     }
   }
+`;
+
+export const AnimatedHeader = styled(animated.h1)`
+  color: var(--secondary-font-color);
+  font-size: 32px;
+  width: 50%;
+  text-align: center;
+  animation: pulse 500ms infinite;
 `;

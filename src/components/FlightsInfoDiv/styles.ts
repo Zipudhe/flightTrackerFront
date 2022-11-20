@@ -13,4 +13,6 @@ export const FlightInfoDiv = styled.div`
   max-height: 350px;
   width: 80vw;
   margin: 12px;
+
+  overflow-x: scroll;
 `;
