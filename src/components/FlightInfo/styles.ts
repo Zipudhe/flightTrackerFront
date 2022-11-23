@@ -5,9 +5,9 @@ export const InfoWrapper = styled.div`
   max-height: 377px;
 
   width: 215px;
-  height: 100%;
+  height: 90%;
 
-  min-width: 100px;
+  min-width: 190px;
   min-height: 150px;
 
   display: flex;

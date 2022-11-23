@@ -24,11 +24,11 @@ export const Flights: FC<IFlights> = ({ isLoading, flights, setFlight }) => {
       from: { opacity: 0 },
       reset: true,
       reverse: flip,
-      delay: 100,
+      delay: 50,
       config: config.molasses,
       onRest: () => setFlip(!flip),
     });
-    return <AnimatedHeader style={animatedProps}> Loading.... </AnimatedHeader>;
+    return <AnimatedHeader style={animatedProps}> Loading...</AnimatedHeader>;
   }
 
   if (flights.length == 0) {

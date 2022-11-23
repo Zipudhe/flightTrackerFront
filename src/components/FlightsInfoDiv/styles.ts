@@ -15,4 +15,5 @@ export const FlightInfoDiv = styled.div`
   margin: 12px;
 
   overflow-x: scroll;
+  scrollbar-width: none;
 `;

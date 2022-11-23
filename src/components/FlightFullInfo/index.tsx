@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, lazy } from 'react';
 
 import { IDetailedFlight } from '../../services/getDetailedFlight';
 import { Text, EnumTextSize, EnumTextTypes } from '../Typography';
@@ -23,11 +23,12 @@ interface IFlightFullInfo {
 }
 
 export const FlightFullInfo: FC<IFlightFullInfo> = ({ data }) => {
-  console.log(data);
   return (
     <Wrapper>
       <AircraftImgDiv>
-        <AircraftImg src={data.aircraft.images.medium[0].src} />
+        <AircraftImg
+          src={data.aircraft.images ? data.aircraft.images.medium[0].src : ''}
+        />
       </AircraftImgDiv>
       <AirCraftDataDiv>
         <InformationDiv>
@@ -61,7 +62,7 @@ export const FlightFullInfo: FC<IFlightFullInfo> = ({ data }) => {
             Short:
           </Text>
           <Text type={EnumTextTypes.primary} size={EnumTextSize.lg}>
-            {data.airline.short}
+            {data.airline ? data.airline.short : 'No airline'}
           </Text>
         </InformationDiv>
       </FlightStatusDetailDiv>

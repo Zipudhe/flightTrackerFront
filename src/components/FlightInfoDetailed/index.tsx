@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, lazy, useEffect, useState } from 'react';
 
 import { IDetailedFlight } from '../../services/getDetailedFlight';
 import { forceLoading } from '../../Utils/forceLoading';
@@ -7,7 +7,8 @@ import { Wrapper, ContentPlaceHolder } from './style';
 
 import { HeaderText, EnumTextTypes } from '../Typography';
 
-import FlightFullInfo from '../FlightFullInfo';
+const FlightFullInfo = lazy(() => import('../FlightFullInfo'));
+// import FlightFullInfo from '../FlightFullInfo';
 import { LoadingFooter } from '../FooterLoading';
 
 interface IFlightInfoDetailed {

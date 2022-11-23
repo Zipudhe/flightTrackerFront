@@ -9,22 +9,12 @@ import {
   ButtonDiv,
 } from './styles';
 
-import {
-  Airline,
-  Aircraft,
-  Identification,
-} from '../../services/getDetailedFlight';
+import { IDetailedFlight } from '../../services/getDetailedFlight';
 
 import { Text, EnumTextTypes, EnumTextSize, ButtonText } from '../Typography';
 
-interface IFlighInfo {
-  airline: Airline;
-  aircraft: Aircraft;
-  identification: Identification;
-}
-
 interface IFlightDiv {
-  flightData: IFlighInfo;
+  flightData: IDetailedFlight;
   onClick?: React.MouseEventHandler;
   onBlur?: React.FocusEventHandler;
 }
@@ -36,8 +26,9 @@ export const FlightInfo: FC<IFlightDiv> = ({ flightData, onClick, onBlur }) => {
         <ImageDiv>
           <Image
             src={
-              flightData.aircraft.images &&
-              flightData.aircraft.images.thumbnails[0].src
+              flightData.aircraft.images
+                ? flightData.aircraft.images.thumbnails[0].src
+                : ''
             }
             alt={
               flightData.aircraft.images
@@ -45,7 +36,6 @@ export const FlightInfo: FC<IFlightDiv> = ({ flightData, onClick, onBlur }) => {
                 : flightData.aircraft.model.text
             }
           />
-          {/* <p> {flightData.aircraft.images.thumbnails[0].copyright} </p> */}
         </ImageDiv>
         <FlightDiv>
           <InformationDiv>

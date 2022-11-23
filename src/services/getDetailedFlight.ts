@@ -38,7 +38,7 @@ type Model = {
 export type Aircraft = {
   model: Model;
   registration: string;
-  images: Images;
+  images?: Images;
 };
 
 export type Airline = {
@@ -79,7 +79,7 @@ export interface IDetailedFlight {
   identification: Identification;
   status: Status;
   aircraft: Aircraft;
-  airline: Airline;
+  airline?: Airline;
   airport: Airport;
   time: Time;
 }

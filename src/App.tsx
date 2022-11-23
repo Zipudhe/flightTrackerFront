@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 
 import GlobalStyle from './GlobalStyles';
 
@@ -27,17 +27,19 @@ interface IPosition extends GeolocationCoordinates {
 }
 
 const App = () => {
-  const [coordinates, setCoordinates] =
-    useState<IPosition | undefined>(undefined);
   const [flights, setFlights] = useState<IDetailedFlight[]>([]);
   const [flight, setFlight] = useState<IDetailedFlight>();
   const [isFlightsLoading, setIsFlightsLoading] = useState<Boolean>(false);
 
+  const [isEnableMove, setMove] = useState(false);
+
+  const divScrollRef = useRef(null);
+
   const getCircleCoordinates = (coords: GeolocationCoordinates) => {
-    const max_y = coords.latitude + 3;
-    const min_y = coords.latitude - 3;
-    const max_x = coords.longitude + 3;
-    const min_x = coords.longitude - 3;
+    const max_y = coords.latitude + 0.3;
+    const min_y = coords.latitude - 0.3;
+    const max_x = coords.longitude + 0.3;
+    const min_x = coords.longitude - 0.3;
 
     const circle = {
       radius: 0.1,
@@ -53,7 +55,6 @@ const App = () => {
     const circle = getCircleCoordinates(position.coords);
     // @ts-ignore
     position.coords['circle'] = circle;
-    setCoordinates(position.coords as IPosition);
 
     const filteredFligts = await getFlights().then(flights => {
       const filteredFligts = flights.filter(flight => {
@@ -111,19 +112,33 @@ const App = () => {
       .finally(() => setIsFlightsLoading(false));
   };
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isEnableMove) {
+      // TODO
+      // - Scroll on mouve move
+    }
+  };
+
   return (
     <React.Fragment>
       <GlobalStyle />
       <MainWrapper>
         <Header>Veja pra onde estão indo os voos perto de você!</Header>
-        <FlightInfoDiv>
+        <FlightInfoDiv
+          ref={divScrollRef}
+          onMouseDown={e => setMove(true)}
+          onMouseMove={e => handleMouseMove(e)}
+          onMouseUp={e => setMove(false)}
+        >
           <Flights
             isLoading={isFlightsLoading}
             setFlight={setFlight}
             flights={flights}
           />
         </FlightInfoDiv>
-        <DetailedFlightInfo data={flight} />
+        <Suspense fallback={<h1> Loading... </h1>}>
+          <DetailedFlightInfo data={flight} />
+        </Suspense>
       </MainWrapper>
     </React.Fragment>
   );
